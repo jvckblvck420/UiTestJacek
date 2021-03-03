@@ -18,6 +18,7 @@ public class PopUpScreenBlocker : MonoBehaviour
             ScreenBlocker.enabled = false;
         }
     }
+  
 
     public void InitBlocker()
     {

@@ -12,7 +12,6 @@ public class UiView : MonoBehaviour
     [SerializeField] private bool UnpauseOnClose = false;
     [SerializeField] private bool CloseOnNewView = true;
     [SerializeField] public Button BackButon;
-
     private UiView ParentView;
     public virtual void Awake()
     {
@@ -20,14 +19,17 @@ public class UiView : MonoBehaviour
     }
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             BackButon.onClick.Invoke();
         }
     }
+    
+  
     public void ActiveView_OnClick(UiView viewToActive)
     {
-        viewToActive.SetParentView(this);
+        viewToActive.SetParentView(this);       
         viewToActive.ActiveView();
         this.ActiveView(!CloseOnNewView);
     }
@@ -52,6 +54,7 @@ public class UiView : MonoBehaviour
     public void ActiveView(bool active)
     {
         this.gameObject.SetActive(active);
+       
     }
 
     public void ActiveView(Action onBackButtonAction = null)

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class BtContentNavigation : MonoBehaviour
 {
     private Button [] PauseButtons;
-    private int index;
+    private int index=0;
     private int previousIndex;
     public UiView Pause;
 
     private void Awake()
     {
         PauseButtons = GetComponentsInChildren<Button>();
+        PauseButtons[index].transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
     }
 
     void Update()

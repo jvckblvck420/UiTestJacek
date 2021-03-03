@@ -7,9 +7,12 @@ public class SoulEnemy : MonoBehaviour , Enemy
     [SerializeField] private GameObject InteractionPanelObject;
     [SerializeField] private GameObject ActionsPanelObject;
     [SerializeField] private SpriteRenderer EnemySpriteRenderer;
-
+     public FightController FightsController;
     private SpawnPoint EnemyPosition;
-
+    private void Awake()
+    {
+        FightsController = GameObject.Find("[ENEMIES]").GetComponent<FightController>();  
+    }
     private void Update()
     {
        
@@ -18,10 +21,15 @@ public class SoulEnemy : MonoBehaviour , Enemy
             if (Input.GetKeyDown(KeyCode.B))
             {
                 UseBow();
+                FightsController.RefreshEnemiesArray();
+              
+               
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
                 UseSword();
+                FightsController.RefreshEnemiesArray();
+             
             }
         }
        

@@ -22,7 +22,7 @@ public class GUIController : MonoBehaviour
     [SerializeField] private PopUpScreenBlocker ScreenBlocker;
     public UiView InvetoryView;
     public UiView PauseView;
-    public List <UiView> MenuViews;
+    public List<UiView> MenuViews;
 
     private void Start()
     {
@@ -32,18 +32,29 @@ public class GUIController : MonoBehaviour
     }
     void Update()
     {
-        if (!PauseView.gameObject.activeSelf)
-            if (Input.GetKeyDown(KeyCode.I))
+        if (ViewActivedElo.ViewActived)
+        {
+            return;
+        }
+        else
+        {
+            if (!PauseView.gameObject.activeSelf)
             {
-                if (InvetoryView.gameObject.activeSelf)
+                if (Input.GetKeyDown(KeyCode.I))
                 {
-                    InvetoryView.BackButon.onClick.Invoke();
-                }
-                else
-                {
-                    InGameGUIButton_OnClick(InvetoryView);
+                    if (InvetoryView.gameObject.activeSelf)
+                    {
+                        InvetoryView.BackButon.onClick.Invoke();
+                    }
+                    else
+                    {
+                        InGameGUIButton_OnClick(InvetoryView);
+                    }
                 }
             }
+        }
+        
+           
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

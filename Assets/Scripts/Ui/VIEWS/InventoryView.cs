@@ -38,7 +38,17 @@ public class InventoryView : UiView
     {
         ClearSoulInformation();
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            UseButton.onClick.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DestroyButton.onClick.Invoke();
+        }
+    }
     private void ClearSoulInformation()
     {
         Description.text = "";

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PopUpView : UiView
 {
-
+    public static bool popUpActived = false;
     public GameObject PopUpScreenBlocker;
 
     public override void Awake()
@@ -16,18 +16,21 @@ public class PopUpView : UiView
 
     private void OnEnable()
     {
+        popUpActived = true;
         GUIController.Insntace.ActiveScreenBlocker(true, this);
     }
     private void OnDisable()
     {
+        popUpActived = false;
         GUIController.Insntace.ActiveScreenBlocker(false, this);
     }
+
 
     [Header("Pop Up Elements")]
     public Text LabelText;
     public Text MessageText;
     public Button YesButton;
-
+    public SoulItemNavigation ArrayForRefresh;
     
     public void ActivePopUpView(PopUpInformation popUpInfo)
     {
@@ -51,6 +54,19 @@ public class PopUpView : UiView
 
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            YesButton.onClick.Invoke();
+            ArrayForRefresh.RefreshArray();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            BackButon.onClick.Invoke();          
+        }
+    }
 
     private void ClearPopUp()
     {

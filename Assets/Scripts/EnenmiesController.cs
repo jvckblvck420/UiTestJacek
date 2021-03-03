@@ -8,7 +8,7 @@ public class EnenmiesController : MonoBehaviour
     [SerializeField] private List<Sprite> AllEnemies;
     [SerializeField] private List<SpawnPoint> SpawnPoints;
     [SerializeField] private GameObject EnemyPrefab;
- 
+    public FightController FightControll;
     //elo elo elo
     private int MaxEnemies = 3;
     private int CurrentEnemies = 0;
@@ -34,10 +34,7 @@ public class EnenmiesController : MonoBehaviour
     {
         DettachListeners();
     }
-    private void Update()
-    {
-        
-    }
+ 
 
     private void AttachListeners()
     {
@@ -51,6 +48,7 @@ public class EnenmiesController : MonoBehaviour
 
     private void EnemyKilled(Enemy enemy)
     {
+       
         FreeSpawnPoint(enemy.GetEnemyPosition());
         DestroyKilledEnemy(enemy.GetEnemyObject());
         StartCoroutine(SpawnEnemyViaCor());
@@ -96,12 +94,15 @@ public class EnenmiesController : MonoBehaviour
             int SpriteIndex = Random.Range(0, AllEnemies.Count);
             Enemy.SetupEnemy(AllEnemies[SpriteIndex], SpawnPoints[FreeSpawnPointIndex]);
             CurrentEnemies++;
+       
         }
     }
 
     private void DestroyKilledEnemy(GameObject enemy)
     {
+        
         Destroy(enemy);
+        
     }
     private void FreeSpawnPoint(SpawnPoint spawnPoint)
     {

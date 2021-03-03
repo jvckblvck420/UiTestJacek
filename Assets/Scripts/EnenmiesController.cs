@@ -9,7 +9,7 @@ public class EnenmiesController : MonoBehaviour
     [SerializeField] private List<SpawnPoint> SpawnPoints;
     [SerializeField] private GameObject EnemyPrefab;
  
-
+    //elo elo elo
     private int MaxEnemies = 3;
     private int CurrentEnemies = 0;
 
